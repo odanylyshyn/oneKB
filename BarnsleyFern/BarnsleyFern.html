@@ -1,0 +1,24 @@
+<html>
+  <head><title>Barnsley Fern</title></head>
+  <body style="background-color: black;padding:20px"><canvas id="c" width="700" height="500"></canvas></body>
+  <script>
+        c = document.getElementById('c').getContext('2d');
+        w=700;h=500;
+        a = new Uint8ClampedArray(w*h*4);
+        x=0;y=0;
+        for(var k=0;k<1000000;k++) {
+            r=Math.random();
+            if(r <= 0.01) x = 0, y *= 0.16;
+            if(r > 0.01 && r <= 0.86) x = 0.85*x + 0.04*y, y = 1.6 - 0.04*x + 0.85*y;
+            if(r > 0.86 && r <= 0.93) x = 0.2*x - 0.26*y, y = 0.23*x + 0.22*y + 1.6;
+            if(r > 0.93) x = 0.28*y - 0.15*x, y = 0.26*x + 0.24*y + 0.44;
+            X = w*(x*0.1 + 0.45) | 0; Y = (h - y*h/10) | 0;
+            i = 4*(X + Y*w); 
+            a[i] = (10-y)*12;
+            a[i+1] = 150;
+            a[i+2] = y*8;
+            a[i+3] = 255;
+        }
+        c.putImageData(new ImageData(a,w,h),0,0);
+  </script>
+</html>
