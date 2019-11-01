@@ -1,6 +1,6 @@
 # PianoSVG
 
-File: piano_1kb.svg
+File: piano_1kb.svg (1017 bytes)
 
 This file can be opened by image viewer and didplayed as image.
 
